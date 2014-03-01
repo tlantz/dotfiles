@@ -1,1 +1,5 @@
-set tabstop=4 shiftwidth=4 expandtab number ruler
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set number 
+set ruler
