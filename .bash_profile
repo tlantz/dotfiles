@@ -6,5 +6,6 @@
 os=`uname`
 if [[ "Darwin" == "${os}" ]]; then
     export CLICOLOR=1
+    export LSCOLORS=GxFxCxDxBxegedabagaced
 fi
 
