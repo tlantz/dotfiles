@@ -6,4 +6,6 @@ set expandtab
 set number 
 set ruler
 au FileType xml,html,ant setlocal tabstop=2 shiftwidth=2
-
+if os == "Linux"
+    set background=dark
+endif
