@@ -11,5 +11,3 @@ elif [[ "Linux" == "${os}" ]]; then
     alias vi="vim"
 fi
 
-export PATH=~/bin:${PATH}
-
