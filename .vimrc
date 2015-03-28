@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " vundle setup
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'tpope/fugitive.vim'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
 " default editor settings
 filetype plugin indent on
