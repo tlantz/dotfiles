@@ -1,0 +1,7 @@
+[user]
+    name = Tim Lantz
+    email = tim.lantz@gmail.com
+[push]
+    default = current
+[core]
+    editor = $(which vim)
