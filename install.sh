@@ -5,6 +5,7 @@ pushd ${thisdir} > /dev/null
 thisdir=`pwd`
 echo "Installing 3rd party helpers"
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+chmod 754 ~/.git-completion.bash
 for file in `ls -A | grep '^\..*' | grep -v '^.git$'`; do
     destfile=~/${file}
     if [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
