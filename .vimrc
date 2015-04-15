@@ -6,6 +6,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
+Plugin 'derekwyatt/vim-scala'
 call vundle#end()
 " default editor settings
 filetype plugin indent on
