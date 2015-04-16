@@ -7,6 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'kchmck/vim-coffee-script'
 call vundle#end()
 " default editor settings
 filetype plugin indent on
@@ -18,7 +19,7 @@ set number
 set ruler
 set hlsearch
 " xml, html settings
-au FileType xml,html,ant,java setlocal tabstop=2 shiftwidth=2
+au FileType xml,html,ant,java,scala setlocal tabstop=2 shiftwidth=2
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
     set background=dark
