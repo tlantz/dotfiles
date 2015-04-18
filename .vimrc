@@ -8,6 +8,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 " default editor settings
 filetype plugin indent on
