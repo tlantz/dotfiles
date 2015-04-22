@@ -9,6 +9,7 @@ Plugin 'rking/ag.vim'               " silversearcher integration
 Plugin 'derekwyatt/vim-scala'       " scala syntax support
 Plugin 'kchmck/vim-coffee-script'   " coffeescript syntax support
 Plugin 'scrooloose/nerdtree'        " file tree navigation
+Plugin 'tpope/vim-markdown'         " vim markdown plugin
 call vundle#end()
 " default editor settings
 filetype plugin indent on
