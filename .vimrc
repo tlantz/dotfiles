@@ -19,12 +19,13 @@ map <C-n> :NERDTreeToggle<CR>       " launch file browser
 " default settings
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
 set number 
 set ruler
 set hlsearch
 " special tab settings by file type
-au FileType xml,html,ant,java,scala setlocal tabstop=2 shiftwidth=2
+au FileType xml,html,ant,java,scala setlocal tabstop=2 shiftwidth=2 softtabstop=2
 " one off for better color scheme for home desktop
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
