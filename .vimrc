@@ -10,6 +10,8 @@ Plugin 'derekwyatt/vim-scala'       " scala syntax support
 Plugin 'kchmck/vim-coffee-script'   " coffeescript syntax support
 Plugin 'scrooloose/nerdtree'        " file tree navigation
 Plugin 'tpope/vim-markdown'         " vim markdown plugin
+Plugin 'elzr/vim-json'              " json syntax plugin
+let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
 call vundle#end()
 " default editor settings
 filetype plugin indent on
@@ -25,7 +27,8 @@ set number
 set ruler
 set hlsearch
 " special tab settings by file type
-au FileType xml,html,ant,java,scala setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+au FileType xml,html,ant,java,scala,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 " one off for better color scheme for home desktop
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
