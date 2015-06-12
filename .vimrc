@@ -29,6 +29,11 @@ set hlsearch
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au FileType xml,html,ant,java,scala,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+let atwork = $ATWORK
+if atwork == "YEP"
+    " non-standard python tabbing for work
+    au FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2
+endif
 " one off for better color scheme for home desktop
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
