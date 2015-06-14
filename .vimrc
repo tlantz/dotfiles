@@ -28,7 +28,8 @@ set ruler
 set hlsearch
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au FileType xml,html,ant,java,scala,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
+au FileType xml,html,hbs,ant,java,scala,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 let atwork = $ATWORK
 if atwork == "YEP"
     " non-standard python tabbing for work
