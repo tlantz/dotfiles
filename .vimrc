@@ -11,6 +11,7 @@ Plugin 'kchmck/vim-coffee-script'   " coffeescript syntax support
 Plugin 'scrooloose/nerdtree'        " file tree navigation
 Plugin 'tpope/vim-markdown'         " vim markdown plugin
 Plugin 'elzr/vim-json'              " json syntax plugin
+Plugin 'pangloss/vim-javascript'    " javascript
 let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
 call vundle#end()
 " default editor settings
@@ -29,7 +30,7 @@ set hlsearch
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
-au FileType xml,html,hbs,ant,java,scala,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 let atwork = $ATWORK
 if atwork == "YEP"
     " non-standard python tabbing for work
