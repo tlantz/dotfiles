@@ -30,6 +30,7 @@ set hlsearch
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
+au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au FileType xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 let atwork = $ATWORK
 if atwork == "YEP"
