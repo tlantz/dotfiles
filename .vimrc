@@ -25,7 +25,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set number 
+set number
 set ruler
 set hlsearch
 " special tab settings by file type
@@ -33,7 +33,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
-au FileType jinja,xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType cpp,jinja,xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 " one off for better color scheme for home desktop
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
