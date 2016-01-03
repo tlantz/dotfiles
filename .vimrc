@@ -12,6 +12,7 @@ Plugin 'scrooloose/nerdtree'        " file tree navigation
 Plugin 'tpope/vim-markdown'         " vim markdown plugin
 Plugin 'elzr/vim-json'              " json syntax plugin
 Plugin 'pangloss/vim-javascript'    " javascript
+Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
 let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
 call vundle#end()
@@ -25,19 +26,15 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set number 
+set number
 set ruler
 set hlsearch
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
-au FileType xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
-let atwork = $ATWORK
-if atwork == "YEP"
-    " non-standard python tabbing for work
-    au FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2
-endif
+au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
+au FileType lua,cpp,jinja,xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 " one off for better color scheme for home desktop
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
