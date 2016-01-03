@@ -14,10 +14,15 @@ Plugin 'elzr/vim-json'              " json syntax plugin
 Plugin 'pangloss/vim-javascript'    " javascript
 Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
+Plugin 'flazz/vim-colorschemes'     " Color schemes
+Plugin 'atweiden/vim-colors-behelit'
+Plugin 'sickill/vim-sunburst'
 let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
+let g:clang_library_path = '/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 call vundle#end()
 " default editor settings
 filetype plugin indent on
+colors SunBurst
 syntax on
 " key bindings
 map <C-n> :NERDTreeToggle<CR>       " launch file browser
