@@ -12,6 +12,7 @@ Plugin 'scrooloose/nerdtree'        " file tree navigation
 Plugin 'tpope/vim-markdown'         " vim markdown plugin
 Plugin 'elzr/vim-json'              " json syntax plugin
 Plugin 'pangloss/vim-javascript'    " javascript
+Plugin 'rip-rip/clang_complete'     " C++ completion
 let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
 call vundle#end()
 " default editor settings
