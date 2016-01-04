@@ -17,9 +17,14 @@ Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'flazz/vim-colorschemes'     " Color schemes
 Plugin 'atweiden/vim-colors-behelit'
 Plugin 'sickill/vim-sunburst'
-let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
-let g:clang_library_path = '/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 call vundle#end()
+" get OS name
+let os = substitute(system('uname'), "\n", "", "")
+let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
+" set path to clang frontend library for OSX
+if os == "Darwin"
+    let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+endif
 " default editor settings
 filetype plugin indent on
 colors SunBurst
@@ -41,7 +46,6 @@ au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au FileType lua,cpp,jinja,xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 " one off for better color scheme for home desktop
-let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
     set background=dark
 endif
