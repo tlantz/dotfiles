@@ -36,7 +36,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set number 
+set number
 set ruler
 set hlsearch
 " special tab settings by file type
