@@ -13,11 +13,12 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set softtabstop=4
 set number 
 set ruler
 set hlsearch
 " xml, html settings
-au FileType xml,html,ant,java setlocal tabstop=2 shiftwidth=2
+au FileType xml,html,ant,java setlocal tabstop=2 shiftwidth=2 softtabstop=2
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
     set background=dark
