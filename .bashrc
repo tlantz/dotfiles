@@ -5,3 +5,6 @@ if [[ -d ${HOME}/bin ]]; then
 fi
 export PATH
 
+
+export NVM_DIR="/Users/tlantz/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
