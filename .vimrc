@@ -14,6 +14,7 @@ Plugin 'elzr/vim-json'              " json syntax plugin
 Plugin 'pangloss/vim-javascript'    " javascript
 Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
+Plugin 'oplatek/Conque-Shell'       " Terminals
 Plugin 'flazz/vim-colorschemes'     " Color schemes
 Plugin 'atweiden/vim-colors-behelit'
 Plugin 'sickill/vim-sunburst'
