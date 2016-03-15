@@ -9,6 +9,17 @@ if [[ ! -f ${gitcompletion} ]]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${gitcompletion}
     chmod 754 ${gitcompletion}
 fi
+
+# if we're on OSX go build program for command line screen locking
+if [[ "Darwin" -eq "`uname`" ]]; then
+    pushd osx/gone
+    make
+    mkdir -p ../../stage/bin
+    cp bin/gone ../../stage/bin
+    popd
+fi
+
+# install all the stuff
 stagedir=`pwd`/stage
 for file in `ls -A ${stagedir} | grep '^\..*' | grep -v '^.git$'`; do
     destfile=~/${file}
