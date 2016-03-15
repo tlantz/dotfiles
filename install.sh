@@ -9,7 +9,8 @@ if [[ ! -f ${gitcompletion} ]]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${gitcompletion}
     chmod 754 ${gitcompletion}
 fi
-for file in `ls -A | grep '^\..*' | grep -v '^.git$'`; do
+stagedir=`pwd`/stage
+for file in `ls -A ${stagedir} | grep '^\..*' | grep -v '^.git$'`; do
     destfile=~/${file}
     if [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
         echo "WARN: skipping ${file}, hard content exists"
@@ -18,7 +19,7 @@ for file in `ls -A | grep '^\..*' | grep -v '^.git$'`; do
             echo "WARN: removing existing symlink at ${destfile}"
             rm ${destfile}
         fi
-        fullpath=`pwd`/${file}
+        fullpath=${stagedir}/${file}
         echo "INFO: linking ${destfile} -> ${fullpath}"
         ln -s ${fullpath} ${destfile}
     fi
