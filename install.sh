@@ -20,20 +20,28 @@ if [[ "Darwin" -eq "`uname`" ]]; then
 fi
 
 # install all the stuff
-stagedir=`pwd`/stage
-for file in `ls -A ${stagedir} | grep '^\..*' | grep -v '^.git$'`; do
-    destfile=~/${file}
-    if [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
-        echo "WARN: skipping ${file}, hard content exists"
-    else
-        if [[ -L ${destfile} ]]; then
-            echo "WARN: removing existing symlink at ${destfile}"
-            rm ${destfile}
+function linkstuff {
+    from=${1}
+    to=${2}
+    for file in `ls -A ${from} | grep '^\..*' | grep -v '^.git$'`; do
+        srcfile="${from}/${file}"
+        destfile="${to}/${file}"
+        if [[ -d ${srcfile} ]]; then
+            continue
         fi
-        fullpath=${stagedir}/${file}
-        echo "INFO: linking ${destfile} -> ${fullpath}"
-        ln -s ${fullpath} ${destfile}
-    fi
-done
+        if [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
+            echo "WARN: skipping ${file}, hard content exists"
+        else
+            if [[ -L ${destfile} ]]; then
+                echo "WARN: removing existing symlink at ${destfile}"
+                rm ${destfile}
+            fi
+            echo "INFO: linking ${destfile} -> ${srcfile}"
+            ln -s ${srcfile} ${destfile}
+        fi
+    done
+}
+linkstuff "${thisdir}/stage" ~
+
 popd > /dev/null
 
