@@ -23,6 +23,10 @@ fi
 function linkstuff {
     from=${1}
     to=${2}
+    if [[ ! -d ${to} ]]; then
+        echo "Creating directory [${to}]..."
+        mkdir -p ${to}
+    fi
     for file in `ls -A ${from} | grep '^\..*' | grep -v '^.git$'`; do
         srcfile="${from}/${file}"
         destfile="${to}/${file}"
