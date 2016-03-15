@@ -27,7 +27,7 @@ function linkstuff {
         echo "Creating directory [${to}]..."
         mkdir -p ${to}
     fi
-    for file in `ls -A ${from} | grep '^\..*' | grep -v '^.git$'`; do
+    for file in `ls -A ${from}`; do
         srcfile="${from}/${file}"
         destfile="${to}/${file}"
         if [[ -d ${srcfile} ]]; then
@@ -46,6 +46,7 @@ function linkstuff {
     done
 }
 linkstuff "${thisdir}/stage" ~
+linkstuff "${thisdir}/stage/bin" ~/bin
 
 popd > /dev/null
 
