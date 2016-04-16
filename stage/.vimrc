@@ -19,6 +19,7 @@ Plugin 'oplatek/Conque-Shell'       " Terminals
 Plugin 'flazz/vim-colorschemes'     " Color schemes
 Plugin 'atweiden/vim-colors-behelit'
 Plugin 'sickill/vim-sunburst'
+Plugin 'isRuslan/vim-es6'
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
