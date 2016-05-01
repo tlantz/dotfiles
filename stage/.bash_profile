@@ -11,8 +11,6 @@ if [[ "Darwin" == "${os}" ]]; then
     export LSCOLORS=GxFxCxDxBxegedabagaced
 elif [[ "Linux" == "${os}" ]]; then
     alias vi="vim"
-    # to support vim 256 color schemes
-    export TERM=xterm-256color
 fi
 
 export PATH=~/bin:${PATH}
