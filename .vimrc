@@ -24,6 +24,8 @@ let g:vim_json_syntax_conceal = 0   " turn off quote hiding for json
 " set path to clang frontend library for OSX
 if os == "Darwin"
     let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+elseif os == "Linux"
+    let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang.so.1'
 endif
 " default editor settings
 filetype plugin indent on
