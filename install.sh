@@ -11,7 +11,9 @@ if [[ ! -f ${gitcompletion} ]]; then
 fi
 
 # if we're on OSX go build program for command line screen locking
-if [[ "Darwin" -eq "`uname`" ]]; then
+thisos=`uname`
+if [[ "Darwin" == "${thisos}" ]]; then
+    echo "INFO: building command line screen lock..."
     pushd osx/gone
     make
     mkdir -p ../../stage/bin
