@@ -17,9 +17,9 @@ Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'nvie/vim-flake8'            " Python flake8
 Plugin 'oplatek/Conque-Shell'       " Terminals
 Plugin 'flazz/vim-colorschemes'     " Color schemes
-Plugin 'atweiden/vim-colors-behelit'
-Plugin 'sickill/vim-sunburst'
-Plugin 'isRuslan/vim-es6'
+Plugin 'atweiden/vim-colors-behelit' " Colors
+Plugin 'sickill/vim-sunburst'       " Yet more colors eh
+Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
