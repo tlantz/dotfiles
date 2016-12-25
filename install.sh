@@ -33,7 +33,7 @@ if [[ ! -f ${gitcompletion} ]]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${gitcompletion}
     chmod 754 ${gitcompletion}
 fi
-vundleroot="~/.vim/bundle/Vundle.vim"
+vundleroot=~/.vim/bundle/Vundle.vim
 if [[ ! -f "${vundleroot}" ]]; then
     echo "INFO: installing vundle"
     git clone https://github.com/VundleVim/Vundle.vim.git ${vundleroot}
