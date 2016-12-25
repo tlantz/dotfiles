@@ -33,6 +33,7 @@ elseif os == "Linux"
 endif
 
 " default editor settings
+set background=dark
 colors gruvbox
 filetype plugin indent on
 syntax on
