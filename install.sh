@@ -1,12 +1,26 @@
 #!/bin/bash
-# make sure git is installed, otherwise you're sort of screwed
-gitpath=`which git`
-if [ -e "${gitpath}" ]; then
-    echo "INFO: git found at [${gitpath}]"
-else
-    echo "ERROR: git not found, please install first!"
-    exit 1
-fi
+# we actually need a bunch of stuff installed via sudo before we start
+# so this is a kill and tell you to do something loop until you meet
+# all the prereqs, makes it obvious what's failing on a new install
+# before half assing the setup without some requirements, silent
+# failures, etc
+requiredapps="git curl"
+function checkapp {
+    app=${1}
+    apppath=`which ${app}`
+    if [ -e "${apppath}" ]; then
+        echo "INFO: [${app}] found at [${apppath}]"
+        if [ ! -x "${apppath}" ]; then
+            echo "ERROR: [${apppath}] must be executable, please fix first!"
+            exit 1
+        fi
+    else
+        echo "ERROR: required app [${app}] not found, please install first!"
+        exit 1
+    fi
+}
+checkapp git
+checkapp curl
 
 # simple script to link home directory dot files to files in repo
 thisdir=`dirname $0`
