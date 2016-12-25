@@ -10,13 +10,16 @@ if [[ ! -f ${gitcompletion} ]]; then
     chmod 754 ${gitcompletion}
 fi
 
+# regardless of system, we try to link this at the end of the script even
+# if it turns up being empty, so may as well just create it, doesn't hurt
+mkdir -p ../../stage/bin
+
 # if we're on OSX go build program for command line screen locking
 thisos=`uname`
 if [[ "Darwin" == "${thisos}" ]]; then
     echo "INFO: building command line screen lock..."
     pushd osx/gone
     make
-    mkdir -p ../../stage/bin
     cp bin/gone ../../stage/bin
     popd
 fi
