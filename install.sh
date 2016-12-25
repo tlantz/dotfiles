@@ -12,7 +12,10 @@ fi
 
 # regardless of system, we try to link this at the end of the script even
 # if it turns up being empty, so may as well just create it, doesn't hurt
-mkdir -p ../../stage/bin
+stagedir="${thisdir}/stage"
+stagebin="${stagedir}/bin"
+echo "INFO: find or create [${stagebin}]"
+mkdir -p ${stagebin}
 
 # if we're on OSX go build program for command line screen locking
 thisos=`uname`
@@ -20,7 +23,7 @@ if [[ "Darwin" == "${thisos}" ]]; then
     echo "INFO: building command line screen lock..."
     pushd osx/gone
     make
-    cp bin/gone ../../stage/bin
+    cp bin/gone ${stagebin}
     popd
 fi
 
@@ -50,8 +53,8 @@ function linkstuff {
         fi
     done
 }
-linkstuff "${thisdir}/stage" ~
-linkstuff "${thisdir}/stage/bin" ~/bin
+linkstuff "${stagedir}" ~
+linkstuff "${stagebin}" ~/bin
 
 popd > /dev/null
 
