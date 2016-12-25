@@ -1,4 +1,13 @@
 #!/bin/bash
+# make sure git is installed, otherwise you're sort of screwed
+gitpath=`which git`
+if [ -e "${gitpath}" ]; then
+    echo "INFO: git found at [${gitpath}]"
+else
+    echo "ERROR: git not found, please install first!"
+    exit 1
+fi
+
 # simple script to link home directory dot files to files in repo
 thisdir=`dirname $0`
 pushd ${thisdir} > /dev/null
