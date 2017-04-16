@@ -33,6 +33,10 @@ elseif os == "Linux"
     let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang.so.1'
 endif
 
+" configure vim-autopep8 to be aggressive
+let g:autopep8_max_line_length=79
+let g:autopep8_aggressive=2
+
 " default editor settings
 set background=dark
 colors gruvbox
