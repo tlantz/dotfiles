@@ -45,7 +45,7 @@ set number
 set ruler
 set hlsearch
 " special tab settings by file type
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
