@@ -61,10 +61,11 @@ fi
 echo "INFO: copying scripts to bin..."
 for f in `ls scripts/`; do
     oldpath="scripts/${f}"
-    newpath="${stagedir}/bin/${f}"
+    newpath="${stagebin}/${f}"
     echo "INFO: copying [${oldpath}] => [${newpath}]"
     cp ${oldpath} ${newpath}
 done
+chmod -R 754 "${stagebin}"
 
 # install all the stuff
 function linkstuff {
