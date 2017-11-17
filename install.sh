@@ -57,6 +57,15 @@ if [[ "Darwin" == "${thisos}" ]]; then
     popd
 fi
 
+# we stage a bunch of runnable scripts in stage/scripts
+echo "INFO: copying scripts to bin..."
+for f in `ls scripts/`; do
+    oldpath="scripts/${f}"
+    newpath="${stagedir}/bin/${f}"
+    echo "INFO: copying [${oldpath}] => [${newpath}]"
+    cp ${oldpath} ${newpath}
+done
+
 # install all the stuff
 function linkstuff {
     from=${1}
