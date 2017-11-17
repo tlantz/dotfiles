@@ -1,0 +1,40 @@
+#!/bin/bash
+base=$1
+prefix=$2
+suffix=$3
+end=$4
+for i in `seq ${suffix} ${end}`; do
+    branch="${prefix}-${i}"
+    git checkout ${branch}
+    if [[ "${?}" != "0" ]]; then
+        echo "Something went wrong switching branches! Read up."
+        exit 1
+    fi
+    git pull
+    h=`expr ${i} - 1`
+    if [[ ${h} -gt 0 ]]; then
+        prevbranch="${prefix}-${h}"
+        echo "Rebasing off of ${prevbranch}."
+        git pull --rebase origin ${prevbranch}
+        if [[ "${?}" != "0" ]]; then
+            echo "More work? I'm out of here... Could not rebase from ${prevbranch}."
+            exit 1
+        fi
+    fi
+    echo "Rebasing off of ${base}."
+    git pull --rebase origin ${base}
+    if [[ "${?}" != "0" ]]; then
+        echo "Nope? Sucks to be you. Enjoy. Could not rebase from ${base}."
+        exit 1
+    fi
+    echo "Ready to force push? Yes?"
+    read answer
+    if [[ "yes" == "${answer}" ]]; then
+        echo "Force pushing to rebased ${branch}."
+        git push --force
+    else
+        echo "Okay, hold up you answered ${answer}?"
+        exit 1
+    fi
+done
+
