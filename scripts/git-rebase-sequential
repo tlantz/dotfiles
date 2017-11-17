@@ -3,6 +3,11 @@ base=$1
 prefix=$2
 suffix=$3
 end=$4
+if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z ${4} ]]; then
+    echo "error: bad usage!"
+    echo "Usage: ${0} [base - like master] [branch prefix] [starting index] [ending index]"
+    exit 1
+fi
 for i in `seq ${suffix} ${end}`; do
     branch="${prefix}-${i}"
     git checkout ${branch}
