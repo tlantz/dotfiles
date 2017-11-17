@@ -1,14 +1,51 @@
 #!/bin/bash
+# we actually need a bunch of stuff installed via sudo before we start
+# so this is a kill and tell you to do something loop until you meet
+# all the prereqs, makes it obvious what's failing on a new install
+# before half assing the setup without some requirements, silent
+# failures, etc
+requiredapps="git curl"
+function checkapp {
+    app=${1}
+    apppath=`which ${app}`
+    if [ -e "${apppath}" ]; then
+        echo "INFO: [${app}] found at [${apppath}]"
+        if [ ! -x "${apppath}" ]; then
+            echo "ERROR: [${apppath}] must be executable, please fix first!"
+            exit 1
+        fi
+    else
+        echo "ERROR: required app [${app}] not found, please install first!"
+        exit 1
+    fi
+}
+checkapp git
+checkapp curl
+checkapp clang
+
 # simple script to link home directory dot files to files in repo
 thisdir=`dirname $0`
 pushd ${thisdir} > /dev/null
 thisdir=`pwd`
-echo "Installing 3rd party helpers"
+echo "INFO: installing 3rd party helpers"
+echo "INFO: installing git completion"
 gitcompletion=~/.gitcompletion.bash
 if [[ ! -f ${gitcompletion} ]]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${gitcompletion}
     chmod 754 ${gitcompletion}
 fi
+vundleroot=~/.vim/bundle/Vundle.vim
+if [[ ! -f "${vundleroot}" ]]; then
+    echo "INFO: installing vundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git ${vundleroot}
+fi
+
+# regardless of system, we try to link this at the end of the script even
+# if it turns up being empty, so may as well just create it, doesn't hurt
+stagedir="${thisdir}/stage"
+stagebin="${stagedir}/bin"
+echo "INFO: find or create [${stagebin}]"
+mkdir -p ${stagebin}
 
 # if we're on OSX go build program for command line screen locking
 thisos=`uname`
@@ -16,8 +53,7 @@ if [[ "Darwin" == "${thisos}" ]]; then
     echo "INFO: building command line screen lock..."
     pushd osx/gone
     make
-    mkdir -p ../../stage/bin
-    cp bin/gone ../../stage/bin
+    cp bin/gone ${stagebin}
     popd
 fi
 
@@ -47,8 +83,8 @@ function linkstuff {
         fi
     done
 }
-linkstuff "${thisdir}/stage" ~
-linkstuff "${thisdir}/stage/bin" ~/bin
+linkstuff "${stagedir}" ~
+linkstuff "${stagebin}" ~/bin
 
 popd > /dev/null
 

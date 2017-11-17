@@ -17,9 +17,11 @@ Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'nvie/vim-flake8'            " Python flake8
 Plugin 'oplatek/Conque-Shell'       " Terminals
 Plugin 'flazz/vim-colorschemes'     " Color schemes
-Plugin 'atweiden/vim-colors-behelit'
-Plugin 'sickill/vim-sunburst'
-Plugin 'isRuslan/vim-es6'
+Plugin 'atweiden/vim-colors-behelit' " Colors
+Plugin 'sickill/vim-sunburst'       " Yet more colors eh
+Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
+Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
+Plugin 'tell-k/vim-autopep8'        " Automated PEP8 reformat
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -30,9 +32,15 @@ if os == "Darwin"
 elseif os == "Linux"
     let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang.so.1'
 endif
+
+" configure vim-autopep8 to be aggressive
+let g:autopep8_max_line_length=79
+let g:autopep8_aggressive=2
+
 " default editor settings
+set background=dark
+colors gruvbox
 filetype plugin indent on
-colors Sunburst
 syntax on
 " key bindings
 map <C-n> :NERDTreeToggle<CR>       " launch file browser
