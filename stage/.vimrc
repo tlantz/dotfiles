@@ -21,6 +21,7 @@ Plugin 'sickill/vim-sunburst'       " Yet more colors eh
 Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
 Plugin 'tell-k/vim-autopep8'        " Automated PEP8 reformat
+Plugin 'davidhalter/jedi-vim'       " Maybe autocomplete?
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
