@@ -35,7 +35,7 @@ if [[ ! -f ${gitcompletion} ]]; then
     chmod 754 ${gitcompletion}
 fi
 vundleroot=~/.vim/bundle/Vundle.vim
-if [[ ! -f "${vundleroot}" ]]; then
+if [[ ! -d "${vundleroot}" ]]; then
     echo "INFO: installing vundle"
     git clone https://github.com/VundleVim/Vundle.vim.git ${vundleroot}
 fi
