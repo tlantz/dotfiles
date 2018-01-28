@@ -56,5 +56,5 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
-au FileType lua,jinja,xml,html,hbs,ant,java,scala,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
