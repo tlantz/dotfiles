@@ -53,6 +53,7 @@ set expandtab
 set number
 set ruler
 set hlsearch
+set backspace=indent,eol,start
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs

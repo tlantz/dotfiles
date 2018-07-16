@@ -7,9 +7,9 @@
 [core]
     editor = $(which vim)
 [merge]
-    tool = meld
+    tool = p4merge
 [mergetool]
     prompt = false
-[mergetool "meld"]
+[mergetool "p4merge"]
     trustExitCode = true
-    cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+    path = /Applications/p4merge.app/Contents/MacOS/p4merge
