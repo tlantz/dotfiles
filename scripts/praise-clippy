@@ -1,0 +1,33 @@
+#!/bin/bash
+# In order to avoid angering the ancestor spirit of clipboard mascots from ancient ages, kill a
+# clipboard process and keep order in the world. Or at least this is the best explanation I've
+# had time to care about.
+EXPECTED_PROC_NAME="pboard"
+PBOARD_PID=`pgrep ${EXPECTED_PROC_NAME}`
+RETVAL=${?}
+if [[ "0" != "${RETVAL}" ]]; then
+    echo "warning: no [${EXPECTED_PROC_NAME}] process found, starting one..."
+    ${EXPECTED_PROC_NAME}
+    RETVAL=${?}
+    if [[ "0" != "${RETVAL}" ]]; then
+        echo "error: could not start [${EXPECTED_PROC_NAME}], error code [${RETVAL}]"
+    fi
+    exit ${RETVAL}
+fi
+echo "Killing [${EXPECTED_PROC_NAME}] at pid [${PBOARD_PID}]..."
+kill -9 ${PBOARD_PID}
+RETVAL=${?}
+if [[ "0" != "${RETVAL}" ]]; then
+    echo "error: unable to kill [${EXPECTED_PROC_NAME}] at pid [${PBOARD_PID}]"
+    exit ${RETVAL}
+fi
+WAIT_TIME=3
+echo "Waiting [${WAIT_TIME}] seconds for new [${EXPECTED_PROC_NAME}] process..."
+sleep ${WAIT_TIME}  # HACK: allow for new process to be started automatically, timing isn't exact
+NEW_PBOARD_PID=`pgrep ${EXPECTED_PROC_NAME}`
+RETVAL=${?}
+if [[ "0" != "${RETVAL}" ]]; then
+    echo "error: no new [${EXPECTED_PROC_NAME}] launched!"
+    exit ${RETVAL}
+fi
+echo "New [${EXPECTED_PROC_NAME}] is running at pid [${NEW_PBOARD_PID}]"
