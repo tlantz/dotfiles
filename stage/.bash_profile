@@ -9,6 +9,7 @@ os=`uname`
 if [[ "Darwin" == "${os}" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
+    alias saver="/System/Library/Frameworks/ScreenSaver.framework/Versions/Current/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
 elif [[ "Linux" == "${os}" ]]; then
     alias vi="vim"
 fi
