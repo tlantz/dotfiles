@@ -15,8 +15,7 @@ Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'nvie/vim-flake8'            " Python flake8
 Plugin 'oplatek/Conque-Shell'       " Terminals
-Plugin 'flazz/vim-colorschemes'     " Color schemes
-Plugin 'atweiden/vim-colors-behelit' " Colors
+Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'sickill/vim-sunburst'       " Yet more colors eh
 Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
