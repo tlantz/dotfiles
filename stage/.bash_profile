@@ -14,6 +14,7 @@ elif [[ "Linux" == "${os}" ]]; then
     alias vi="vim"
 fi
 
+alias k='kubectl'
 export PATH=~/bin:${PATH}
 
 export NVM_DIR="${HOME}/.nvm"
@@ -24,3 +25,6 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
+
+# added by Miniconda3 installer
+export PATH="/Users/tim.lantz/miniconda3/bin:$PATH"

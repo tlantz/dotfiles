@@ -15,8 +15,7 @@ Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'nvie/vim-flake8'            " Python flake8
 Plugin 'oplatek/Conque-Shell'       " Terminals
-Plugin 'flazz/vim-colorschemes'     " Color schemes
-Plugin 'atweiden/vim-colors-behelit' " Colors
+Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'sickill/vim-sunburst'       " Yet more colors eh
 Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
@@ -62,8 +61,8 @@ set hlsearch
 set backspace=indent,eol,start
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown colorcolumn=100
+au BufNewFile,BufFilePre,BufRead *.rst set filetype=markdown colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
