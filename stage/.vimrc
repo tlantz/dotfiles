@@ -23,6 +23,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
 Plugin 'tell-k/vim-autopep8'        " Automated PEP8 reformat
 Plugin 'davidhalter/jedi-vim'       " Maybe autocomplete?
 Plugin 'ekalinin/Dockerfile.vim'    " KOOLAID
+Plugin 'inkarkat/vim-ingo-library'  " Dependencies, ugh.
+Plugin 'inkarkat/vim-spellcheck'    " I guess I'm a human?
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -37,6 +39,10 @@ endif
 " configure vim-autopep8 to be aggressive
 let g:autopep8_max_line_length=79
 let g:autopep8_aggressive=2
+
+" configure ongoing spellchecking
+set spell spelllang=en_us
+let g:SpellCheck_ErrorContextNum = 99
 
 " default editor settings
 set background=dark
