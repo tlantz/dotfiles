@@ -24,6 +24,7 @@ Plugin 'davidhalter/jedi-vim'       " Maybe autocomplete?
 Plugin 'ekalinin/Dockerfile.vim'    " KOOLAID
 Plugin 'inkarkat/vim-ingo-library'  " Dependencies, ugh.
 Plugin 'inkarkat/vim-spellcheck'    " I guess I'm a human?
+Plugin 'rykka/riv.vim'              " Because I like pain.
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
