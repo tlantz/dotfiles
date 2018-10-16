@@ -75,13 +75,22 @@ function linkstuff {
         echo "Creating directory [${to}]..."
         mkdir -p ${to}
     fi
-    for file in `ls -A ${from}`; do
-        srcfile="${from}/${file}"
-        destfile="${to}/${file}"
+    for file in `find ${from}`; do
+        # Get just the name for path manipulation.
+        exp="s^${from}/^^g"
+        relfile=`echo ${file} | sed "${exp}"`
+        srcfile="${file}"
+        destfile="${to}/${relfile}"
+        # Un-comment these two lines and inspect before you blow away your day. *_*
+        # echo "INFO: file=${file}, srcfile=${srcfile}, destfile=${destfile}"
+        # continue
         if [[ -d ${srcfile} ]]; then
-            continue
-        fi
-        if [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
+            echo "INFO: directory encountered at [${srcfile}]"
+            if [[ ! -d "${destfile}" ]]; then
+                echo "INFO: creating directory [${desfile}]"
+                mkdir -p ${destfile}
+            fi
+        elif [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
             echo "WARN: skipping ${file}, hard content exists"
         else
             if [[ -L ${destfile} ]]; then
@@ -97,4 +106,3 @@ linkstuff "${stagedir}" ~
 linkstuff "${stagebin}" ~/bin
 
 popd > /dev/null
-
