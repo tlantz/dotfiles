@@ -21,7 +21,9 @@ function checkapp {
 }
 checkapp git
 checkapp curl
-checkapp clang
+if [[ "Darwin" == `uname` ]]; then
+    checkapp clang
+fi
 
 # simple script to link home directory dot files to files in repo
 thisdir=`dirname $0`
