@@ -5,7 +5,7 @@
 [push]
     default = current
 [core]
-    editor = $(which vim)
+    editor = $(which nvim)
 [merge]
     tool = p4merge
 [mergetool]

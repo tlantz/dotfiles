@@ -25,6 +25,7 @@ Plugin 'ekalinin/Dockerfile.vim'    " KOOLAID
 Plugin 'inkarkat/vim-ingo-library'  " Dependencies, ugh.
 Plugin 'inkarkat/vim-spellcheck'    " I guess I'm a human?
 Plugin 'rykka/riv.vim'              " Because I like pain.
+Plugin 'editorconfig/editorconfig-vim'
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -67,3 +68,4 @@ au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au Filetype python setlocal colorcolumn=80
