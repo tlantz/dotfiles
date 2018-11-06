@@ -69,3 +69,6 @@ au BufNewFile,BufFilePre,BufRead BUCK set filetype=python colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au Filetype python setlocal colorcolumn=80
+" HACK: ensure that jedi can navigate up from within test directories in a
+" virtualenv.
+au Filetype python python sys.path.append(".")
