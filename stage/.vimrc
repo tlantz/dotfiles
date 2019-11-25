@@ -27,6 +27,7 @@ Plugin 'inkarkat/vim-spellcheck'    " I guess I'm a human?
 Plugin 'rykka/riv.vim'              " Because I like pain.
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -74,3 +75,13 @@ au Filetype python setlocal colorcolumn=80
 " HACK: ensure that jedi can navigate up from within test directories in a
 " virtualenv.
 au Filetype python python sys.path.append(".")
+
+" Recommended syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
