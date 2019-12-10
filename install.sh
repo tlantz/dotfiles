@@ -19,11 +19,19 @@ function checkapp {
         exit 1
     fi
 }
+
+function setup_osx_terminal {
+    terminal_plist="~/Library/Preferences/com.apple.Terminal.plist"
+    defaults write "${terminal_plist}" "Default Window Settings" -string "Pro"
+    defaults write "${terminal_plist}" "Startup Window Settings" -string "Pro"
+}
+
 checkapp git
 checkapp curl
 if [[ "Darwin" == `uname` ]]; then
     checkapp clang
     checkapp nvim
+    setup_osx_terminal
 fi
 
 # simple script to link home directory dot files to files in repo
