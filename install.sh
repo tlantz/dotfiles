@@ -23,7 +23,7 @@ checkapp git
 checkapp curl
 if [[ "Darwin" == `uname` ]]; then
     checkapp clang
-    checkapp neovim
+    checkapp nvim
 fi
 
 # simple script to link home directory dot files to files in repo
