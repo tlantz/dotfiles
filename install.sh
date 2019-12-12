@@ -28,9 +28,10 @@ function setup_osx_terminal {
 
 checkapp git
 checkapp curl
+checkapp nvim
+checkapp shellcheck
 if [[ "Darwin" == `uname` ]]; then
     checkapp clang
-    checkapp nvim
     setup_osx_terminal
 fi
 
