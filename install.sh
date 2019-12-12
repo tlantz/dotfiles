@@ -4,7 +4,6 @@
 # all the prereqs, makes it obvious what's failing on a new install
 # before half assing the setup without some requirements, silent
 # failures, etc
-requiredapps="git curl"
 function checkapp {
     app=${1}
     apppath=`which ${app}`
