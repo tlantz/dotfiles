@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+if [[ ! -d .venv ]]; then
+    python -m virtualenv .venv || exit ${?}
+fi
+. .venv/bin/activate
+if [[ "`pwd`/.venv/bin/pip" != "`which pip`" ]]; then
+    which pip
+    echo "error: pip is not in the local venv path as expected"
+    exit 1
+fi
+pip install jedi neovim flake8 mypy black flake8-black || exit ${?}
+exit 0
