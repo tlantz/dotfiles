@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # we actually need a bunch of stuff installed via sudo before we start
 # so this is a kill and tell you to do something loop until you meet
 # all the prereqs, makes it obvious what's failing on a new install
@@ -6,7 +6,7 @@
 # failures, etc
 function checkapp {
     app=${1}
-    apppath=`which ${app}`
+    apppath=$(command -v "${app}")
     if [ -e "${apppath}" ]; then
         echo "INFO: [${app}] found at [${apppath}]"
         if [ ! -x "${apppath}" ]; then
@@ -20,7 +20,7 @@ function checkapp {
 }
 
 function setup_osx_terminal {
-    terminal_plist="~/Library/Preferences/com.apple.Terminal.plist"
+    terminal_plist="${HOME}/Library/Preferences/com.apple.Terminal.plist"
     defaults write "${terminal_plist}" "Default Window Settings" -string "Pro"
     defaults write "${terminal_plist}" "Startup Window Settings" -string "Pro"
 }
@@ -29,15 +29,15 @@ checkapp git
 checkapp curl
 checkapp nvim
 checkapp shellcheck
-if [[ "Darwin" == `uname` ]]; then
+if [[ "Darwin" == $(uname) ]]; then
     checkapp clang
     setup_osx_terminal
 fi
 
 # simple script to link home directory dot files to files in repo
-thisdir=`dirname $0`
-pushd ${thisdir} > /dev/null
-thisdir=`pwd`
+thisdir=$(dirname "${0}")
+pushd "${thisdir}" || exit "${?}"
+thisdir=$(pwd)
 echo "INFO: installing 3rd party helpers"
 echo "INFO: installing git completion"
 gitcompletion=~/.gitcompletion.bash
@@ -56,25 +56,25 @@ fi
 stagedir="${thisdir}/stage"
 stagebin="${stagedir}/bin"
 echo "INFO: find or create [${stagebin}]"
-mkdir -p ${stagebin}
+mkdir -p "${stagebin}"
 
 # if we're on OSX go build program for command line screen locking
-thisos=`uname`
+thisos=$(uname)
 if [[ "Darwin" == "${thisos}" ]]; then
     echo "INFO: building command line screen lock..."
-    pushd osx/gone
+    pushd "osx/gone" || exit "${?}"
     make
-    cp bin/gone ${stagebin}
-    popd
+    cp "bin/gone" "${stagebin}"
+    popd || exit "${?}"
 fi
 
 # we stage a bunch of runnable scripts in stage/scripts
 echo "INFO: copying scripts to bin..."
-for f in `ls scripts/`; do
+for f in scripts/*; do
     oldpath="scripts/${f}"
     newpath="${stagebin}/${f}"
     echo "INFO: copying [${oldpath}] => [${newpath}]"
-    cp ${oldpath} ${newpath}
+    cp "${oldpath}" "${newpath}"
 done
 chmod -R 754 "${stagebin}"
 
@@ -84,12 +84,13 @@ function linkstuff {
     to=${2}
     if [[ ! -d ${to} ]]; then
         echo "Creating directory [${to}]..."
-        mkdir -p ${to}
+        mkdir -p "${to}"
     fi
-    for file in `find ${from}`; do
+    find "${from}" > tmp
+    while IFS= read -r file; do
         # Get just the name for path manipulation.
         exp="s^${from}/^^g"
-        relfile=`echo ${file} | sed "${exp}"`
+        relfile=$(echo "${file}" | sed "${exp}")
         srcfile="${file}"
         destfile="${to}/${relfile}"
         # Un-comment these two lines and inspect before you blow away your day. *_*
@@ -98,20 +99,21 @@ function linkstuff {
         if [[ -d ${srcfile} ]]; then
             echo "INFO: directory encountered at [${srcfile}]"
             if [[ ! -d "${destfile}" ]]; then
-                echo "INFO: creating directory [${desfile}]"
-                mkdir -p ${destfile}
+                echo "INFO: creating directory [${destfile}]"
+                mkdir -p "${destfile}"
             fi
         elif [[ (-e ${destfile}) && (! -L ${destfile}) ]]; then
             echo "WARN: skipping ${file}, hard content exists"
         else
             if [[ -L ${destfile} ]]; then
                 echo "WARN: removing existing symlink at ${destfile}"
-                rm ${destfile}
+                rm "${destfile}"
             fi
             echo "INFO: linking ${destfile} -> ${srcfile}"
-            ln -s ${srcfile} ${destfile}
+            ln -s "${srcfile}" "${destfile}"
         fi
-    done
+    done < tmp
+    rm tmp
 }
 
 linkstuff "${stagedir}" ~
@@ -119,14 +121,16 @@ linkstuff "${stagebin}" ~/bin
 
 # Hook into .bash_profile cleanly.
 bash_profile_hook_line="[[ -s ~/.bash_tlantz ]] && source ~/.bash_tlantz"
-fgrep "${bash_profile_hook_line}" ~/.bash_profile >> /dev/null
+grep -F "${bash_profile_hook_line}" ~/.bash_profile >> /dev/null
 grep_retval="${?}"
 if [[ "0" != "${grep_retval}" ]]; then
     echo "INFO: appending hook into bash profile adds to .bash_profile"
-    echo "" >> ~/.bash_profile
-    echo "# Added by tlantz/dotfiles/install.sh" >> ~/.bash_profile
-    echo "${bash_profile_hook_line}" >> ~/.bash_profile
-    echo "" >> ~/.bash_profile
+    {
+        echo ""
+        echo "# Added by tlantz/dotfiles/install.sh" >> ~/.bash_profile
+        echo "${bash_profile_hook_line}" >> ~/.bash_profile
+        echo ""
+    } >> ~/.bash_profile
 fi
 
-popd > /dev/null
+popd || exit "${?}"
