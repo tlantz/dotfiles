@@ -117,4 +117,16 @@ function linkstuff {
 linkstuff "${stagedir}" ~
 linkstuff "${stagebin}" ~/bin
 
+# Hook into .bash_profile cleanly.
+bash_profile_hook_line="[[ -s ~/.bash_tlantz ]] && source ~/.bash_tlantz"
+fgrep "${bash_profile_hook_line}" ~/.bash_profile >> /dev/null
+grep_retval="${?}"
+if [[ "0" != "${grep_retval}" ]]; then
+    echo "INFO: appending hook into bash profile adds to .bash_profile"
+    echo "" >> ~/.bash_profile
+    echo "# Added by tlantz/dotfiles/install.sh" >> ~/.bash_profile
+    echo "${bash_profile_hook_line}" >> ~/.bash_profile
+    echo "" >> ~/.bash_profile
+fi
+
 popd > /dev/null
