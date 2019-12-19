@@ -19,15 +19,15 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'sickill/vim-sunburst'       " Yet more colors eh
 Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
 Plugin 'octol/vim-cpp-enhanced-highlight' " C++ syntax colors
-Plugin 'tell-k/vim-autopep8'        " Automated PEP8 reformat
 Plugin 'davidhalter/jedi-vim'       " Maybe autocomplete?
 Plugin 'ekalinin/Dockerfile.vim'    " KOOLAID
 Plugin 'inkarkat/vim-ingo-library'  " Dependencies, ugh.
 Plugin 'inkarkat/vim-spellcheck'    " I guess I'm a human?
 Plugin 'rykka/riv.vim'              " Because I like pain.
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'editorconfig/editorconfig-vim' " Excellent.
+Plugin 'deoplete-plugins/deoplete-jedi' " When it works.
+Plugin 'vim-syntastic/syntastic'    " I used to hate it, but have come around.
+Plugin 'hashivim/vim-terraform'     " Because again, I hate myself.
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
