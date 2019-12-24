@@ -6,7 +6,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'          " Vundle package manager
 Plugin 'tpope/vim-fugitive'         " git integration
 Plugin 'rking/ag.vim'               " silversearcher integration
-Plugin 'kchmck/vim-coffee-script'   " coffeescript syntax support
 Plugin 'scrooloose/nerdtree'        " file tree navigation
 Plugin 'tpope/vim-markdown'         " vim markdown plugin
 Plugin 'elzr/vim-json'              " json syntax plugin
@@ -14,7 +13,6 @@ Plugin 'pangloss/vim-javascript'    " javascript
 Plugin 'ntpeters/vim-better-whitespace' " better whitepsace?
 Plugin 'rip-rip/clang_complete'     " C++ completion
 Plugin 'nvie/vim-flake8'            " Python flake8
-Plugin 'oplatek/Conque-Shell'       " Terminals
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'sickill/vim-sunburst'       " Yet more colors eh
 Plugin 'isRuslan/vim-es6'           " Because it's like a real language now? =)
