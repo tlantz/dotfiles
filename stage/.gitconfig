@@ -1,5 +1,3 @@
-[user]
-    name = Tim Lantz
-    email = tim.lantz@gmail.com
 [include]
-    path = .gitconfig.base
+    path = ~/.gitconfig.base
+    path = ~/.gitconfig.local
