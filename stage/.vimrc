@@ -62,15 +62,18 @@ set number
 set ruler
 set hlsearch
 set backspace=indent,eol,start
+" So we stop getting maxmempattern for rst link patterns, default is 1000
+set mmp=2000
 " special tab settings by file type
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown colorcolumn=100
-au BufNewFile,BufFilePre,BufRead *.rst set filetype=markdown colorcolumn=100 nofoldenable
+au BufNewFile,BufFilePre,BufRead *.rst set filetype=rst colorcolumn=100 nofoldenable
 au BufNewFile,BufFilePre,BufRead *.hbs set filetype=hbs
 au BufNewFile,BufFilePre,BufRead BUCK set filetype=python colorcolumn=100
 au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au BufNewFile,BufFilePre,BufRead Jenkinsfile set filetype=groovy
 au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au Filetype python setlocal colorcolumn=80
+au FileType rst setlocal tabstop=3 shiftwidth=3 softtabstop=3
 " HACK: ensure that jedi can navigate up from within test directories in a
 " virtualenv.
 au Filetype python python sys.path.append(".")
@@ -88,3 +91,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['mypy', 'flake8']
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["rst"] }
