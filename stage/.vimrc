@@ -27,6 +27,7 @@ Plugin 'deoplete-plugins/deoplete-jedi' " When it works.
 Plugin 'vim-syntastic/syntastic'    " I used to hate it, but have come around.
 Plugin 'hashivim/vim-terraform'     " Because again, I hate myself.
 Plugin 'juliosueiras/vim-terraform-completion'  "Such a long name!
+Plugin 'embear/vim-localvimrc'      " Empowering repo spellfiles, yay.
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -95,3 +96,10 @@ let g:syntastic_python_checkers = ['mypy', 'flake8']
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["rst"] }
+
+" Hoaky setup for local vimrcs for repo based spellfiles. Need to figure out
+" something better in the future.
+if filereadable(expand("~/.vim/lvimrc.whitelist"))
+    let g:localvimrc_sandbox = 0
+    source ~/.vim/lvimrc.whitelist
+endif
