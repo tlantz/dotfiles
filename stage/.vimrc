@@ -73,7 +73,8 @@ au BufNewFile,BufFilePre,BufRead *.jinja set filetype=jinja
 au BufNewFile,BufFilePre,BufRead Jenkinsfile set filetype=groovy
 au FileType lua,jinja,xml,html,hbs,ant,java,javascript,json,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au Filetype python setlocal colorcolumn=80
-au FileType rst setlocal tabstop=3 shiftwidth=3 softtabstop=3
+au FileType rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 spell
+au Filetype rst syntax spell toplevel
 " HACK: ensure that jedi can navigate up from within test directories in a
 " virtualenv.
 au Filetype python python sys.path.append(".")
