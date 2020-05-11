@@ -29,6 +29,7 @@ Plugin 'hashivim/vim-terraform'     " Because again, I hate myself.
 Plugin 'juliosueiras/vim-terraform-completion'  "Such a long name!
 Plugin 'embear/vim-localvimrc'      " Empowering repo spellfiles, yay.
 Plugin 'hiphish/jinja.vim'          " Please work well.
+Plugin 'dhruvasagar/vim-table-mode' " Column width nuttiness needs help now.
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
