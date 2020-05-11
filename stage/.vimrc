@@ -28,6 +28,7 @@ Plugin 'vim-syntastic/syntastic'    " I used to hate it, but have come around.
 Plugin 'hashivim/vim-terraform'     " Because again, I hate myself.
 Plugin 'juliosueiras/vim-terraform-completion'  "Such a long name!
 Plugin 'embear/vim-localvimrc'      " Empowering repo spellfiles, yay.
+Plugin 'hiphish/jinja.vim'          " Please work well.
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -103,3 +104,15 @@ if filereadable(expand("~/.vim/lvimrc.whitelist"))
     let g:localvimrc_sandbox = 0
     source ~/.vim/lvimrc.whitelist
 endif
+
+" From
+" https://stackoverflow.com/questions/20979403/adding-number-of-lines-in-file-to-vim-status-bar
+set statusline =%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
