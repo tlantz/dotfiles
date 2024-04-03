@@ -27,9 +27,9 @@ Plugin 'deoplete-plugins/deoplete-jedi' " When it works.
 Plugin 'vim-syntastic/syntastic'    " I used to hate it, but have come around.
 Plugin 'hashivim/vim-terraform'     " Because again, I hate myself.
 Plugin 'juliosueiras/vim-terraform-completion'  "Such a long name!
-Plugin 'embear/vim-localvimrc'      " Empowering repo spellfiles, yay.
 Plugin 'hiphish/jinja.vim'          " Please work well.
 Plugin 'dhruvasagar/vim-table-mode' " Column width nuttiness needs help now.
+Plugin 'sbdchd/neoformat'           " Neoformat, to use with ocamlformat
 call vundle#end()
 " get OS name
 let os = substitute(system('uname'), "\n", "", "")
@@ -80,7 +80,7 @@ au FileType rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 spell
 au Filetype rst syntax spell toplevel
 " HACK: ensure that jedi can navigate up from within test directories in a
 " virtualenv.
-au Filetype python python sys.path.append(".")
+au Filetype python python3 sys.path.append(".")
 
 " Recommended syntastic settings
 set statusline+=%#warningmsg#
