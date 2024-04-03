@@ -107,6 +107,17 @@ if filereadable(expand("~/.vim/lvimrc.whitelist"))
 endif
 
 " From
+" https://ocaml.org/p/ocamlformat/0.22.4/doc/editor_setup.html#vim-setup
+let g:opambin = substitute(system('opam config var bin'),'\n$','','''')
+let g:neoformat_ocaml_ocamlformat = {
+            \ 'exe': g:opambin . '/ocamlformat',
+            \ 'no_append': 1,
+            \ 'stdin': 1,
+            \ }
+
+let g:neoformat_enabled_ocaml = ['ocamlformat']
+
+" From
 " https://stackoverflow.com/questions/20979403/adding-number-of-lines-in-file-to-vim-status-bar
 set statusline =%1*\ %n\ %*            "buffer number
 set statusline +=%5*%{&ff}%*            "file format
